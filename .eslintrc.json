@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:ava/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "env": {
+    "node": true
+  }
+}

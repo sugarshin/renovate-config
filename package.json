@@ -1,0 +1,66 @@
+{
+  "name": "@sugarshin/renovate-config",
+  "version": "0.0.0",
+  "description": "My shareable config for Renovate",
+  "files": [],
+  "scripts": {
+    "test": "ava",
+    "lint": "eslint *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sugarshin/renovate-config.git"
+  },
+  "keywords": [
+    "renovate"
+  ],
+  "author": "Shingo Sato <shinsugar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sugarshin/renovate-config/issues"
+  },
+  "homepage": "https://github.com/sugarshin/renovate-config#readme",
+  "devDependencies": {
+    "ava": "^1.2.1",
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-ava": "^5.1.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.3",
+    "prettier": "^1.16.4",
+    "renovate": "^14.10.3"
+  },
+  "renovate-config": {
+    "default": {
+      "extends": [
+        "config:base",
+        ":separatePatchReleases",
+        ":prNotPending",
+        ":timezone(Asia/Tokyo)"
+      ]
+    },
+    "js-app": {
+      "extends": [
+        "@sugarshin",
+        "@sugarshin:devDependenciesAutomergePatch",
+        ":pinAllExceptPeerDependencies"
+      ]
+    },
+    "js-lib": {
+      "extends": [
+        "@sugarshin",
+        "@sugarshin:devDependenciesAutomergePatch",
+        ":pinOnlyDevDependencies"
+      ]
+    },
+    "devDependenciesAutomergePatch": {
+      "description": "Automerge patch upgrades if they pass tests in devDependencies",
+      "devDependencies": {
+        "extends": [
+          ":automergePatch"
+        ]
+      }
+    }
+  }
+}
