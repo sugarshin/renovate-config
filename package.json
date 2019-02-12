@@ -34,23 +34,45 @@
   "renovate-config": {
     "default": {
       "extends": [
-        "config:base",
-        ":separatePatchReleases",
+        ":separateMajorReleases",
+        ":combinePatchMinorReleases",
+        ":ignoreUnstable",
         ":prNotPending",
-        ":timezone(Asia/Tokyo)"
-      ]
+        ":renovatePrefix",
+        ":semanticPrefixFixDepsChoreOthers",
+        ":updateNotScheduled",
+        ":ignoreModulesAndTests",
+        ":maintainLockFilesDisabled",
+        ":autodetectPinVersions",
+        ":prHourlyLimit2",
+        ":prConcurrentLimit10",
+        ":timezone(Asia/Tokyo)",
+        "group:monorepos",
+        "group:recommended",
+        "helpers:disableTypesNodeMajor"
+      ],
+      "dependencies": {
+        "extends": [
+          ":labels(Renovate, dependencies)"
+        ]
+      },
+      "devDependencies": {
+        "extends": [
+          ":labels(Renovate, devDependencies)"
+        ]
+      }
     },
     "js-app": {
       "extends": [
         "@sugarshin",
-        "@sugarshin:devDependenciesAutomergePatch",
+        "@sugarshin:devDependenciesAutomergeMinor",
         ":pinAllExceptPeerDependencies"
       ]
     },
     "js-lib": {
       "extends": [
         "@sugarshin",
-        "@sugarshin:devDependenciesAutomergePatch",
+        "@sugarshin:devDependenciesAutomergeMinor",
         ":pinOnlyDevDependencies"
       ]
     },
@@ -59,6 +81,14 @@
       "devDependencies": {
         "extends": [
           ":automergePatch"
+        ]
+      }
+    },
+    "devDependenciesAutomergeMinor": {
+      "description": "Automerge minor upgrades if they pass tests in devDependencies",
+      "devDependencies": {
+        "extends": [
+          ":automergeMinor"
         ]
       }
     }
