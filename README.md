@@ -25,11 +25,33 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 ```json
 {
   "extends": [
-    "config:base",
-    ":separatePatchReleases",
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    ":ignoreUnstable",
     ":prNotPending",
-    ":timezone(Asia/Tokyo)"
-  ]
+    ":renovatePrefix",
+    ":semanticPrefixFixDepsChoreOthers",
+    ":updateNotScheduled",
+    ":ignoreModulesAndTests",
+    ":maintainLockFilesDisabled",
+    ":autodetectPinVersions",
+    ":prHourlyLimit2",
+    ":prConcurrentLimit10",
+    ":timezone(Asia/Tokyo)",
+    "group:monorepos",
+    "group:recommended",
+    "helpers:disableTypesNodeMajor"
+  ],
+  "dependencies": {
+    "extends": [
+      ":labels(Renovate, dependencies)"
+    ]
+  },
+  "devDependencies": {
+    "extends": [
+      ":labels(Renovate, devDependencies)"
+    ]
+  }
 }
 ```
 
@@ -39,7 +61,7 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 {
   "extends": [
     "@sugarshin",
-    "@sugarshin:devDependenciesAutomergePatch",
+    "@sugarshin:devDependenciesAutomergeMinor",
     ":pinAllExceptPeerDependencies"
   ]
 }
@@ -51,7 +73,7 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 {
   "extends": [
     "@sugarshin",
-    "@sugarshin:devDependenciesAutomergePatch",
+    "@sugarshin:devDependenciesAutomergeMinor",
     ":pinOnlyDevDependencies"
   ]
 }
