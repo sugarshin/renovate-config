@@ -67,7 +67,12 @@
         "@sugarshin",
         "@sugarshin:devDependenciesAutomergeMinor",
         ":pinAllExceptPeerDependencies"
-      ]
+      ],
+      "dependencies": {
+        "extends": [
+          ":automergePatch"
+        ]
+      }
     },
     "js-lib": {
       "extends": [
