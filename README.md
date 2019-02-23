@@ -25,33 +25,8 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 ```json
 {
   "extends": [
-    ":separateMajorReleases",
-    ":combinePatchMinorReleases",
-    ":ignoreUnstable",
-    ":prNotPending",
-    ":renovatePrefix",
-    ":semanticPrefixFixDepsChoreOthers",
-    ":updateNotScheduled",
-    ":ignoreModulesAndTests",
-    ":maintainLockFilesDisabled",
-    ":autodetectPinVersions",
-    ":prHourlyLimit2",
-    ":prConcurrentLimit10",
-    ":timezone(Asia/Tokyo)",
-    "group:monorepos",
-    "group:recommended",
-    "helpers:disableTypesNodeMajor"
-  ],
-  "dependencies": {
-    "extends": [
-      ":labels(Renovate, dependencies)"
-    ]
-  },
-  "devDependencies": {
-    "extends": [
-      ":labels(Renovate, devDependencies)"
-    ]
-  }
+    "@sugarshin"
+  ]
 }
 ```
 
@@ -60,9 +35,7 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 ```json
 {
   "extends": [
-    "@sugarshin",
-    "@sugarshin:devDependenciesAutomergeMinor",
-    ":pinAllExceptPeerDependencies"
+    "@sugarshin:js-app"
   ]
 }
 ```
@@ -72,9 +45,7 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 ```json
 {
   "extends": [
-    "@sugarshin",
-    "@sugarshin:devDependenciesAutomergeMinor",
-    ":pinOnlyDevDependencies"
+    "@sugarshin:js-lib"
   ]
 }
 ```
