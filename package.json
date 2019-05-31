@@ -49,7 +49,7 @@
         ":ignoreModulesAndTests",
         ":maintainLockFilesDisabled",
         ":autodetectPinVersions",
-        ":prHourlyLimitNone",
+        ":prHourlyLimit4",
         ":timezone(Asia/Tokyo)",
         ":label(Renovate)",
         "group:monorepos",
