@@ -1,11 +1,17 @@
 {
   "name": "@sugarshin/renovate-config",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "My shareable config for Renovate",
   "files": [],
   "scripts": {
     "test": "ava",
-    "lint": "eslint *.js"
+    "lint": "eslint *.js",
+    "update-pkg-version": "npm --no-git-tag-version version",
+    "postupdate-pkg-version": "git add package.json package-lock.json && MESSAGE=$(node -p \"require('./package.json').version\"); git commit -m $MESSAGE",
+    "u": "npm run update-pkg-version",
+    "u:patch": "npm run u -- patch",
+    "u:minor": "npm run u -- minor",
+    "u:major": "npm run u -- major"
   },
   "repository": {
     "type": "git",
