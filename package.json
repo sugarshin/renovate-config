@@ -34,7 +34,7 @@
     "eslint-plugin-prettier": "3.1.0",
     "husky": "2.5.0",
     "lint-staged": "8.2.1",
-    "prettier": "1.17.1",
+    "prettier": "1.18.2",
     "renovate": "14.59.4"
   },
   "renovate-config": {
