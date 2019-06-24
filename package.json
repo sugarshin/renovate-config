@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/sugarshin/renovate-config#readme",
   "devDependencies": {
-    "ava": "1.4.1",
+    "ava": "2.1.0",
     "eslint": "5.16.0",
     "eslint-config-prettier": "4.3.0",
     "eslint-plugin-ava": "6.0.0",
