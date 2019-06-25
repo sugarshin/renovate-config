@@ -4,48 +4,22 @@ references:
   workspace_root: &workspace_root
     ~/workspace
 
+orbs:
+  npm: sugarshin/npm@0.1.0
+
 executors:
   nodejs:
     working_directory: *workspace_root
     docker:
       - image: circleci/node:12.3.1
 
-commands:
-  restore_deps:
-    steps:
-      - restore_cache:
-          name: Restore Cache - Dependency Modules
-          keys:
-            - v1-npm-deps-{{ checksum "package-lock.json" }}
-            - v1-npm-deps-
-  save_deps:
-    steps:
-      - save_cache:
-          name: Save Cache - Dependency Modules
-          key: v1-npm-deps-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
-  add_npmrc:
-    steps:
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" >> ~/.npmrc
-  configure_git:
-    steps:
-      - run:
-          name: Configure Git
-          command: |
-            git config --global user.name 'CircleCI'
-            git config --global user.email 's+circleci@sugarshin.net'
 jobs:
   test:
     executor:
       name: nodejs
     steps:
       - checkout
-      - restore_deps
-      - run: npm install
-      - save_deps
+      - npm/install
       - run:
           name: Lint
           command: npm run lint
@@ -53,21 +27,16 @@ jobs:
           name: Test
           command: npm test
 
-  publish:
-    executor:
-      name: nodejs
-    steps:
-      - checkout
-      - add_npmrc
-      - run:
-          name: Publish package to npm and tagging
-          command: /bin/bash .circleci/publish-and-tagging.sh
-
 workflows:
   test_and_publish:
     jobs:
       - test
-      - publish:
+      - npm/release:
+          executor: nodejs
+          workspace-root: *workspace_root
+          flags: --access=public
+          tagging: true
+          ssh-fingerprints: fb:73:06:7d:cd:ca:97:f4:ec:bd:4d:c5:ab:18:50:2b
           requires:
             - test
           filters:
