@@ -35,7 +35,7 @@
     "husky": "2.5.0",
     "lint-staged": "8.2.1",
     "prettier": "1.18.2",
-    "renovate": "14.59.4"
+    "renovate": "18.20.9"
   },
   "renovate-config": {
     "default": {
