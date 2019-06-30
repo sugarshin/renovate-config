@@ -1,6 +1,6 @@
 {
   "name": "@sugarshin/renovate-config",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "My shareable config for Renovate",
   "files": [],
   "scripts": {
