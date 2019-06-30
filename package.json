@@ -4,8 +4,7 @@
   "description": "My shareable config for Renovate",
   "files": [],
   "scripts": {
-    "test": "ava",
-    "lint": "eslint *.js",
+    "test": "renovate-config-validator",
     "update-pkg-version": "npm --no-git-tag-version version",
     "postupdate-pkg-version": "git add package.json package-lock.json && MESSAGE=$(node -p \"require('./package.json').version\"); git commit -m $MESSAGE",
     "u": "npm run update-pkg-version",
@@ -27,15 +26,7 @@
   },
   "homepage": "https://github.com/sugarshin/renovate-config#readme",
   "devDependencies": {
-    "ava": "2.1.0",
-    "eslint": "5.16.0",
-    "eslint-config-prettier": "4.3.0",
-    "eslint-plugin-ava": "7.1.0",
-    "eslint-plugin-prettier": "3.1.0",
-    "husky": "2.5.0",
-    "lint-staged": "8.2.1",
-    "prettier": "1.18.2",
-    "renovate": "14.59.4"
+    "renovate": "18.20.9"
   },
   "renovate-config": {
     "default": {
@@ -57,16 +48,24 @@
         "helpers:disableTypesNodeMajor"
       ],
       "prConcurrentLimit": 3,
-      "dependencies": {
-        "extends": [
-          ":labels(Renovate, dependencies)"
-        ]
-      },
-      "devDependencies": {
-        "extends": [
-          ":labels(Renovate, devDependencies)"
-        ]
-      }
+      "packageRules": [
+        {
+          "extends": [
+            ":labels(Renovate, dependencies)"
+          ],
+          "depTypeList": [
+            "dependencies"
+          ]
+        },
+        {
+          "extends": [
+            ":labels(Renovate, devDependencies)"
+          ],
+          "depTypeList": [
+            "devDependencies"
+          ]
+        }
+      ]
     },
     "js-app": {
       "extends": [
@@ -74,11 +73,16 @@
         "@sugarshin:devDependenciesAutomergeMinor",
         ":pinAllExceptPeerDependencies"
       ],
-      "dependencies": {
-        "extends": [
-          ":automergePatch"
-        ]
-      }
+      "packageRules": [
+        {
+          "extends": [
+            ":automergePatch"
+          ],
+          "depTypeList": [
+            "dependencies"
+          ]
+        }
+      ]
     },
     "js-lib": {
       "extends": [
@@ -89,19 +93,29 @@
     },
     "devDependenciesAutomergePatch": {
       "description": "Automerge patch upgrades if they pass tests in devDependencies",
-      "devDependencies": {
-        "extends": [
-          ":automergePatch"
-        ]
-      }
+      "packageRules": [
+        {
+          "extends": [
+            ":automergePatch"
+          ],
+          "depTypeList": [
+            "devDependencies"
+          ]
+        }
+      ]
     },
     "devDependenciesAutomergeMinor": {
       "description": "Automerge minor upgrades if they pass tests in devDependencies",
-      "devDependencies": {
-        "extends": [
-          ":automergeMinor"
-        ]
-      }
+      "packageRules": [
+        {
+          "extends": [
+            ":automergeMinor"
+          ],
+          "depTypeList": [
+            "devDependencies"
+          ]
+        }
+      ]
     }
   }
 }
