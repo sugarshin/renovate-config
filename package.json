@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/sugarshin/renovate-config#readme",
   "devDependencies": {
-    "renovate": "18.30.0"
+    "renovate": "18.30.3"
   },
   "renovate-config": {
     "default": {
