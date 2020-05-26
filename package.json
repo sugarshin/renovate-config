@@ -31,23 +31,12 @@
   "renovate-config": {
     "default": {
       "extends": [
-        ":separateMajorReleases",
-        ":ignoreUnstable",
-        ":prNotPending",
-        ":renovatePrefix",
-        ":semanticPrefixFixDepsChoreOthers",
-        ":updateNotScheduled",
-        ":ignoreModulesAndTests",
-        ":maintainLockFilesDisabled",
-        ":autodetectPinVersions",
-        ":prHourlyLimit4",
+        "config:base",
         ":timezone(Asia/Tokyo)",
-        ":label(Renovate)",
-        "group:monorepos",
-        "group:recommended",
-        "helpers:disableTypesNodeMajor"
+        ":label(Renovate)"
       ],
-      "prConcurrentLimit": 3,
+      "prConcurrentLimit": 5,
+      "separateMinorPatch": true,
       "packageRules": [
         {
           "depTypeList": [
@@ -86,8 +75,7 @@
           ],
           "groupName": "All minor update devDependencies"
         }
-      ],
-      "separateMinorPatch": true
+      ]
     },
     "js-app": {
       "extends": [
