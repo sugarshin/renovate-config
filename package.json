@@ -64,8 +64,46 @@
           "depTypeList": [
             "devDependencies"
           ]
+        },
+        {
+          "depTypeList": [
+            "dependencies"
+          ],
+          "packagePatterns": [
+            "*"
+          ],
+          "updateTypes": [
+            "patch"
+          ],
+          "groupName": "All patch update dependencies"
+        },
+        {
+          "depTypeList": [
+            "devDependencies"
+          ],
+          "packagePatterns": [
+            "*"
+          ],
+          "updateTypes": [
+            "patch"
+          ],
+          "groupName": "All patch update devDependencies",
+          "automerge": true
+        },
+        {
+          "depTypeList": [
+            "devDependencies"
+          ],
+          "packagePatterns": [
+            "*"
+          ],
+          "updateTypes": [
+            "minor"
+          ],
+          "groupName": "All minor update devDependencies"
         }
-      ]
+      ],
+      "separateMinorPatch": true
     },
     "js-app": {
       "extends": [
@@ -91,29 +129,21 @@
         ":pinOnlyDevDependencies"
       ]
     },
-    "devDependenciesAutomergePatch": {
-      "description": "Automerge patch upgrades if they pass tests in devDependencies",
-      "packageRules": [
-        {
-          "extends": [
-            ":automergePatch"
-          ],
-          "depTypeList": [
-            "devDependencies"
-          ]
-        }
-      ]
-    },
     "devDependenciesAutomergeMinor": {
       "description": "Automerge minor upgrades if they pass tests in devDependencies",
       "packageRules": [
         {
-          "extends": [
-            ":automergeMinor"
-          ],
           "depTypeList": [
             "devDependencies"
-          ]
+          ],
+          "packagePatterns": [
+            "*"
+          ],
+          "updateTypes": [
+            "minor"
+          ],
+          "groupName": "All minor update devDependencies",
+          "automerge": true
         }
       ]
     }
