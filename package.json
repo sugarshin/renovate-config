@@ -50,22 +50,6 @@
       "prConcurrentLimit": 3,
       "packageRules": [
         {
-          "extends": [
-            ":labels(Renovate, dependencies)"
-          ],
-          "depTypeList": [
-            "dependencies"
-          ]
-        },
-        {
-          "extends": [
-            ":labels(Renovate, devDependencies)"
-          ],
-          "depTypeList": [
-            "devDependencies"
-          ]
-        },
-        {
           "depTypeList": [
             "dependencies"
           ],
