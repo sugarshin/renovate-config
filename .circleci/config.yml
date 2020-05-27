@@ -11,7 +11,7 @@ executors:
   nodejs:
     working_directory: *workspace_root
     docker:
-      - image: circleci/node:12.13.0
+      - image: circleci/node:12.17.0
 
 jobs:
   test:
