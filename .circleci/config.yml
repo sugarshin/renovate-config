@@ -5,7 +5,7 @@ references:
     ~/workspace
 
 orbs:
-  npm: sugarshin/npm@0.1.5
+  npm: sugarshin/npm@0.1.7
 
 executors:
   nodejs:
