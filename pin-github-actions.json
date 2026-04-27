@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Pin all GitHub Actions to full SHA digests (supply chain mitigation).",
+  "extends": ["helpers:pinGitHubActionDigests"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["action"],
+      "pinDigests": true,
+      "groupName": "GitHub Actions digests"
+    }
+  ]
+}

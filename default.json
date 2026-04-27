@@ -1,0 +1,20 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "@sugarshin's default preset for Renovate.",
+  "extends": [
+    "config:best-practices",
+    ":timezone(Asia/Tokyo)",
+    ":label(renovate)",
+    ":separateMultipleMajorReleases",
+    "github>sugarshin/renovate-config:automerge",
+    "github>sugarshin/renovate-config:group",
+    "github>sugarshin/renovate-config:security",
+    "github>sugarshin/renovate-config:pin-github-actions"
+  ],
+  "internalChecksAsSuccess": true,
+  "separateMinorPatch": true,
+  "configMigration": true,
+  "prConcurrentLimit": 10,
+  "osvVulnerabilityAlerts": true,
+  "dependencyDashboardOSVVulnerabilitySummary": "unresolved"
+}

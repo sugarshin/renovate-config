@@ -4,7 +4,7 @@
   "private": true,
   "description": "Shareable Renovate config presets",
   "scripts": {
-    "test": "renovate-config-validator --strict --no-global default.json5 automerge.json5 group.json5 security.json5 monorepo.json5 pin-github-actions.json5"
+    "test": "renovate-config-validator --strict --no-global default.json automerge.json group.json security.json monorepo.json pin-github-actions.json"
   },
   "repository": {
     "type": "git",
