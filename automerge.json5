@@ -10,11 +10,6 @@
       automerge: true,
     },
     {
-      description: 'Auto-merge digest updates (Docker images, GitHub Actions).',
-      matchUpdateTypes: ['digest', 'pinDigest', 'pin'],
-      automerge: true,
-    },
-    {
       description: 'Auto-merge lockFileMaintenance.',
       matchUpdateTypes: ['lockFileMaintenance'],
       automerge: true,

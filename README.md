@@ -26,34 +26,33 @@ To pin to a specific version:
 
 | Preset | Description |
 |---|---|
-| `github>sugarshin/renovate-config` (default) | `config:best-practices` + Asia/Tokyo timezone + `renovate` label + automerge / group / security / pin-github-actions を内部 extends |
-| `github>sugarshin/renovate-config:automerge` | devDependencies non-major + digest + lockFileMaintenance を automerge |
-| `github>sugarshin/renovate-config:group` | linters / test runners / Node.js / `@types/*` をグループ化 |
+| `github>sugarshin/renovate-config` (default) | `config:best-practices` + Asia/Tokyo timezone + `renovate` label, with automerge / group / security / pin-github-actions extended internally |
+| `github>sugarshin/renovate-config:automerge` | Automerge devDependencies non-major updates and lockFileMaintenance |
+| `github>sugarshin/renovate-config:group` | Group linters, test runners, Node.js, and `@types/*` |
 | `github>sugarshin/renovate-config:security` | OSV alerts + 7-day cooldown + OpenSSF Scorecard |
-| `github>sugarshin/renovate-config:monorepo` | 主要 monorepo グループ化 (単独利用向け) |
-| `github>sugarshin/renovate-config:pin-github-actions` | GitHub Actions を full SHA pin |
+| `github>sugarshin/renovate-config:monorepo` | Extra monorepo grouping (for standalone use) |
+| `github>sugarshin/renovate-config:pin-github-actions` | Pin GitHub Actions to full SHA digests |
 
-### `default` に含まれる挙動
+### What `default` enables
 
-`extends: ["github>sugarshin/renovate-config"]` を 1 行記述するだけで以下が有効になります。
+A single `extends: ["github>sugarshin/renovate-config"]` activates all of the following:
 
-- [`config:best-practices`](https://docs.renovatebot.com/presets-config/#configbest-practices) (Renovate メンテナ推奨セット)
+- [`config:best-practices`](https://docs.renovatebot.com/presets-config/#configbest-practices) (recommended set by Renovate maintainers)
   - `:dependencyDashboard` / `:semanticPrefixFixDepsChoreOthers` / `group:monorepos` / `group:recommended` / `mergeConfidence:age-confidence-badges`
   - `docker:pinDigests` / `helpers:pinGitHubActionDigests`
   - `:configMigration` / `:pinDevDependencies` / `abandonments:recommended`
   - `security:minimumReleaseAgeNpm` (3 days) / `:maintainLockFilesWeekly`
-- Asia/Tokyo タイムゾーン
-- PR ラベル `renovate`
-- major リリースを段階的に分離 (`:separateMultipleMajorReleases`)
+- Asia/Tokyo timezone
+- PR label: `renovate`
+- Separate multiple major releases (`:separateMultipleMajorReleases`)
 - `separateMinorPatch: true`
-- devDependencies の minor / patch を automerge
-- digest 更新を automerge
-- lockFileMaintenance を automerge
-- linters / test / Node.js / `@types/*` のグループ化
+- Automerge devDependencies minor / patch updates
+- Automerge lockFileMaintenance
+- Group linters / test runners / Node.js / `@types/*`
 - OSV vulnerability alerts + 7-day cooldown + OpenSSF Scorecard
-- GitHub Actions を SHA pin
+- Pin GitHub Actions to full SHA
 
-カスタマイズしたい場合は利用側 `renovate.json` で個別 `packageRules` を後置きすると上書きできます。
+To customize, add your own `packageRules` after the extends in your `renovate.json` — later rules override earlier ones.
 
 ## License
 
