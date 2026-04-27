@@ -1,0 +1,23 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  description: 'Automerge devDependencies non-major + digests + lockFileMaintenance.',
+  platformAutomerge: true,
+  packageRules: [
+    {
+      description: 'Auto-merge all devDependencies non-major updates.',
+      matchDepTypes: ['devDependencies'],
+      matchUpdateTypes: ['minor', 'patch'],
+      automerge: true,
+    },
+    {
+      description: 'Auto-merge digest updates (Docker images, GitHub Actions).',
+      matchUpdateTypes: ['digest', 'pinDigest', 'pin'],
+      automerge: true,
+    },
+    {
+      description: 'Auto-merge lockFileMaintenance.',
+      matchUpdateTypes: ['lockFileMaintenance'],
+      automerge: true,
+    },
+  ],
+}
