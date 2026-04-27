@@ -1,23 +1,18 @@
 {
   "name": "@sugarshin/renovate-config",
-  "version": "7.0.0",
-  "description": "My shareable config for Renovate",
-  "files": [],
+  "version": "8.0.0",
+  "private": true,
+  "description": "Shareable Renovate config presets",
   "scripts": {
-    "test": "renovate-config-validator",
-    "update-pkg-version": "npm --no-git-tag-version version",
-    "postupdate-pkg-version": "git add package.json package-lock.json && MESSAGE=$(node -p \"require('./package.json').version\"); git commit -m $MESSAGE",
-    "u": "npm run update-pkg-version",
-    "u:patch": "npm run u -- patch",
-    "u:minor": "npm run u -- minor",
-    "u:major": "npm run u -- major"
+    "test": "renovate-config-validator --strict --no-global default.json5 automerge.json5 group.json5 security.json5 monorepo.json5 pin-github-actions.json5"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sugarshin/renovate-config.git"
   },
   "keywords": [
-    "renovate"
+    "renovate",
+    "renovate-config"
   ],
   "author": "Shingo Sato <shinsugar@gmail.com>",
   "license": "MIT",
@@ -26,98 +21,6 @@
   },
   "homepage": "https://github.com/sugarshin/renovate-config#readme",
   "devDependencies": {
-    "renovate": "20.25.8"
-  },
-  "renovate-config": {
-    "default": {
-      "extends": [
-        "config:base",
-        ":timezone(Asia/Tokyo)",
-        ":label(Renovate)"
-      ],
-      "prConcurrentLimit": 5,
-      "separateMinorPatch": true,
-      "packageRules": [
-        {
-          "depTypeList": [
-            "dependencies"
-          ],
-          "packagePatterns": [
-            "*"
-          ],
-          "updateTypes": [
-            "patch"
-          ],
-          "groupName": "All patch update dependencies"
-        },
-        {
-          "depTypeList": [
-            "devDependencies"
-          ],
-          "packagePatterns": [
-            "*"
-          ],
-          "updateTypes": [
-            "patch"
-          ],
-          "groupName": "All patch update devDependencies",
-          "automerge": true
-        },
-        {
-          "depTypeList": [
-            "devDependencies"
-          ],
-          "packagePatterns": [
-            "*"
-          ],
-          "updateTypes": [
-            "minor"
-          ],
-          "groupName": "All minor update devDependencies"
-        }
-      ]
-    },
-    "js-app": {
-      "extends": [
-        "@sugarshin",
-        "@sugarshin:devDependenciesAutomergeMinor",
-        ":pinAllExceptPeerDependencies"
-      ],
-      "packageRules": [
-        {
-          "extends": [
-            ":automergePatch"
-          ],
-          "depTypeList": [
-            "dependencies"
-          ]
-        }
-      ]
-    },
-    "js-lib": {
-      "extends": [
-        "@sugarshin",
-        "@sugarshin:devDependenciesAutomergeMinor",
-        ":pinOnlyDevDependencies"
-      ]
-    },
-    "devDependenciesAutomergeMinor": {
-      "description": "Automerge minor upgrades if they pass tests in devDependencies",
-      "packageRules": [
-        {
-          "depTypeList": [
-            "devDependencies"
-          ],
-          "packagePatterns": [
-            "*"
-          ],
-          "updateTypes": [
-            "minor"
-          ],
-          "groupName": "All minor update devDependencies",
-          "automerge": true
-        }
-      ]
-    }
+    "renovate": "43.141.6"
   }
 }

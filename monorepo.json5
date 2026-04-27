@@ -1,0 +1,8 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  description: 'Extra monorepo grouping (in addition to group:monorepos in config:recommended).',
+  extends: [
+    'group:monorepos',
+    'group:recommended',
+  ],
+}

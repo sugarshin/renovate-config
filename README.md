@@ -1,54 +1,58 @@
 # @sugarshin/renovate-config
 
-[![CircleCI][circleci-image]][circleci-url]
-[![npm version][npm-image]][npm-url]
+[![validate][validate-image]][validate-url]
 [![License][license-image]][license-url]
 
-My shareable config for [Renovate](https://renovatebot.com/)
+Shareable [Renovate](https://renovatebot.com/) config presets.
 
 ## Usage
 
-Just extends in `renovate.json` .
-
 ```json
 {
-  "extends": ["@sugarshin"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>sugarshin/renovate-config"]
 }
 ```
 
-You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches it from npm registry automatically.
+To pin to a specific version:
+
+```json
+{
+  "extends": ["github>sugarshin/renovate-config#v8.0.0"]
+}
+```
 
 ## Presets
 
-### `@sugarshin (default)`
+| Preset | Description |
+|---|---|
+| `github>sugarshin/renovate-config` (default) | `config:best-practices` + Asia/Tokyo timezone + `renovate` label, with automerge / group / security / pin-github-actions extended internally |
+| `github>sugarshin/renovate-config:automerge` | Automerge devDependencies non-major updates and lockFileMaintenance |
+| `github>sugarshin/renovate-config:group` | Group linters, test runners, Node.js, and `@types/*` |
+| `github>sugarshin/renovate-config:security` | OSV alerts + 7-day cooldown + OpenSSF Scorecard |
+| `github>sugarshin/renovate-config:monorepo` | Extra monorepo grouping (for standalone use) |
+| `github>sugarshin/renovate-config:pin-github-actions` | Pin GitHub Actions to full SHA digests |
 
-```json
-{
-  "extends": [
-    "@sugarshin"
-  ]
-}
-```
+### What `default` enables
 
-### `@sugarshin:js-app`
+A single `extends: ["github>sugarshin/renovate-config"]` activates all of the following:
 
-```json
-{
-  "extends": [
-    "@sugarshin:js-app"
-  ]
-}
-```
+- [`config:best-practices`](https://docs.renovatebot.com/presets-config/#configbest-practices) (recommended set by Renovate maintainers)
+  - `:dependencyDashboard` / `:semanticPrefixFixDepsChoreOthers` / `group:monorepos` / `group:recommended` / `mergeConfidence:age-confidence-badges`
+  - `docker:pinDigests` / `helpers:pinGitHubActionDigests`
+  - `:configMigration` / `:pinDevDependencies` / `abandonments:recommended`
+  - `security:minimumReleaseAgeNpm` (3 days) / `:maintainLockFilesWeekly`
+- Asia/Tokyo timezone
+- PR label: `renovate`
+- Separate multiple major releases (`:separateMultipleMajorReleases`)
+- `separateMinorPatch: true`
+- Automerge devDependencies minor / patch updates
+- Automerge lockFileMaintenance
+- Group linters / test runners / Node.js / `@types/*`
+- OSV vulnerability alerts + 7-day cooldown + OpenSSF Scorecard
+- Pin GitHub Actions to full SHA
 
-### `@sugarshin:js-lib`
-
-```json
-{
-  "extends": [
-    "@sugarshin:js-lib"
-  ]
-}
-```
+To customize, add your own `packageRules` after the extends in your `renovate.json` — later rules override earlier ones.
 
 ## License
 
@@ -56,9 +60,7 @@ You don't have to do `npm install @sugarshin/renovate-config` . Renovate fetches
 
 © sugarshin
 
-[npm-image]: https://img.shields.io/npm/v/@sugarshin/renovate-config.svg?style=flat-square
-[npm-url]: https://www.npmjs.org/package/@sugarshin/renovate-config
-[circleci-image]: https://circleci.com/gh/sugarshin/renovate-config.svg?style=svg&circle-token=5dbe2d23ddf6981f5f30fa3457d8b63a6c7bbd43
-[circleci-url]: https://circleci.com/gh/sugarshin/renovate-config/tree/master
+[validate-image]: https://github.com/sugarshin/renovate-config/actions/workflows/validate.yml/badge.svg
+[validate-url]: https://github.com/sugarshin/renovate-config/actions/workflows/validate.yml
 [license-image]: https://img.shields.io/:license-mit-blue.svg?style=flat-square
 [license-url]: https://sugarshin.mit-license.org/
