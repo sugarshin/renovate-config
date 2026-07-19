@@ -14,14 +14,6 @@ Shareable [Renovate](https://renovatebot.com/) config presets.
 }
 ```
 
-To pin to a specific version:
-
-```json
-{
-  "extends": ["github>sugarshin/renovate-config#v8.0.0"]
-}
-```
-
 ## Presets
 
 | Preset | Description |
