@@ -1,4 +1,4 @@
-# @sugarshin/renovate-config
+# renovate-config
 
 [![validate][validate-image]][validate-url]
 [![License][license-image]][license-url]
