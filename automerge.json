@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Automerge devDependencies non-major + digests + lockFileMaintenance.",
-  "platformAutomerge": true,
   "packageRules": [
     {
       "description": "Auto-merge all devDependencies non-major updates.",
