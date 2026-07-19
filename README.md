@@ -1,4 +1,4 @@
-# @sugarshin/renovate-config
+# renovate-config
 
 [![validate][validate-image]][validate-url]
 [![License][license-image]][license-url]
@@ -11,14 +11,6 @@ Shareable [Renovate](https://renovatebot.com/) config presets.
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["github>sugarshin/renovate-config"]
-}
-```
-
-To pin to a specific version:
-
-```json
-{
-  "extends": ["github>sugarshin/renovate-config#v8.0.0"]
 }
 ```
 
